@@ -2,7 +2,7 @@
 FROM node:22-alpine AS build
 
 WORKDIR /app
-RUN corepack enable
+RUN corepack enable && corepack prepare pnpm@10 --activate
 
 # Copy manifests first so the dependency layer caches across source changes.
 COPY package.json pnpm-lock.yaml ./
