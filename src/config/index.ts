@@ -137,7 +137,7 @@ const storage = {
   /** Which backend persists guild state. `json` requires no extra packages. */
   driver: enumValue("STORAGE_DRIVER", STORAGE_DRIVERS, "json"),
   /** Directory holding the JSON driver's data and backup files. */
-  path: optionalString("/tmp/data", "./data"),
+  path: optionalString("STORAGE_PATH", "/tmp/data"),
   /**
    * Delay before batching pending writes to disk. Coalesces the burst of
    * updates a poll cycle produces into a single file write.
