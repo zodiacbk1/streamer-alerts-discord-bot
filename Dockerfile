@@ -28,8 +28,7 @@ COPY --from=build --chown=node:node /app/node_modules ./node_modules
 COPY --from=build --chown=node:node /app/dist ./dist
 COPY --chown=node:node package.json ./
 
-# The JSON driver writes here; mount a volume to survive container replacement.
-VOLUME ["/app/data"]
+# The JSON driver writes to /app/data; attach a Railway Volume mounted at /app/data to persist it.
 
 # Signals reach the process directly so graceful shutdown flushes pending writes.
 CMD ["node", "dist/index.js"]
